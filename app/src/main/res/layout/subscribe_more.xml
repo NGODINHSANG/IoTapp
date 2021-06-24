@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SubscribeMore">
+
+    <LinearLayout
+        android:id="@+id/layoutTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/layoutContent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_sub_list"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:background="#0939B4"
+            android:text="BK"
+            android:paddingBottom="5dp"
+            android:textColor="#ffffff"
+            android:textColorHint="#877B7B"
+            android:textSize="20pt"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/layoutBottom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/historic_warning"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#0939B4"
+                android:paddingTop="10dp"
+                android:text="SUBSCRIBE MORE"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textSize="14pt"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutContent"
+        android:layout_width="match_parent"
+        android:layout_height="660dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutTop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical">
+
+        <SearchView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/search_map"
+            android:queryHint="Search Location"
+            android:iconifiedByDefault="false"
+            android:layout_margin="3dp"
+            android:elevation="2dp"
+            android:background="@drawable/search_area"
+            />
+
+        <include layout="@layout/activity_maps"/>
+
+        <TextView
+            android:id="@+id/nearest_place"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="20dp"
+            android:paddingTop="4dp"
+            android:background="#ffffff"
+            android:textAlignment="center"
+            android:text="Choose the place nearest your location, you can subscribe it!"
+            android:textColor="#000000"
+            android:textColorHint="#877B7B"
+            android:textSize="8pt"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/subscribe"
+            android:layout_width="200dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="100dp"
+            android:paddingTop="4dp"
+            android:elevation="3dp"
+            android:background="@drawable/buttons"
+            android:onClick="subscribeClick"
+            android:textAlignment="center"
+            android:text="Subscribe"
+            android:textColor="#ffffff"
+            android:textColorHint="#877B7B"
+            android:textSize="8pt"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

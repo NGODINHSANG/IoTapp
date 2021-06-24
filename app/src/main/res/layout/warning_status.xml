@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:id="@+id/warningContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/warning_item">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:background="#f1f1f1"
+                android:text="Warning"
+                android:textAlignment="center"
+                android:textColor="#FFC700"
+                android:textSize="13pt"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/text2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff"
+                    android:text="Location: Lang Bac "
+                    android:paddingLeft="20dp"
+                    android:textColor="#000000"
+                    android:textSize="7pt"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/text3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff"
+                    android:text="Time: 06/07/2021 20:58:20 PM"
+                    android:paddingLeft="20dp"
+                    android:textColor="#000000"
+                    android:textSize="7pt"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </LinearLayout>
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/text4"
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:paddingTop="5dp"
+                    android:paddingLeft="8dp"
+                    android:text="CO: 0.12345 ppm"
+                    android:textColor="#000000"
+                    android:textSize="7pt"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/text5"
+                    android:layout_width="190dp"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:paddingTop="5dp"
+                    android:paddingLeft="8dp"
+                    android:text="NH4: 1.23456 ppm"
+                    android:textColor="#000000"
+                    android:textSize="7pt"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/text8"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:paddingTop="0dp"
+                    android:paddingLeft="5dp"
+                    android:text="N"
+                    android:textColor="#24FF00"
+                    android:textSize="8pt"
+                    android:textStyle="bold" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/text6"
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:paddingLeft="8dp"
+                    android:paddingBottom="3dp"
+                    android:text="CO2: 2.34567 ppm"
+                    android:textColor="#000000"
+                    android:textSize="7pt"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/text7"
+                    android:layout_width="190dp"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:paddingBottom="3dp"
+                    android:paddingLeft="8dp"
+                    android:text="Acetona: 4.5678 ppm"
+                    android:textColor="#000000"
+                    android:textSize="7pt"
+                    android:textStyle="bold" />
+                <ImageView
+                    android:id="@+id/deleteImage"
+                    android:layout_width="24dp"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/delete" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+    </LinearLayout>

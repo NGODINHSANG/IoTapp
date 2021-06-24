@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AirQuality">
+
+    <LinearLayout
+        android:id="@+id/layoutTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/layoutContent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_sub_list"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:background="#0939B4"
+            android:text="BK"
+            android:paddingBottom="5dp"
+            android:textColor="#ffffff"
+            android:textColorHint="#877B7B"
+            android:textSize="20pt"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/layoutBottom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/historic_warning"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#0939B4"
+                android:paddingTop="10dp"
+                android:text="AIR QUALITY"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textSize="14pt"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutContent"
+        android:layout_width="match_parent"
+        android:layout_height="660dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutTop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/image1detail"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:srcCompat="@drawable/image1detail" />
+
+            <TableLayout
+                android:id="@+id/airquarlity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TableRow>
+                    <TextView
+                        android:layout_width="130dp"
+                        android:layout_height="80dp"
+                        android:background="#ffffff"
+                        android:paddingTop="30dp"
+                        android:text="GASES"
+                        android:textAlignment="center"
+                        android:textColor="#000000"
+                        android:textSize="10pt"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="80dp"
+                        android:background="#ffffff"
+                        android:paddingTop="30dp"
+                        android:text="PPM INDEX"
+                        android:textAlignment="center"
+                        android:textColor="#000000"
+                        android:textSize="10pt"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="130dp"
+                        android:layout_height="80dp"
+                        android:background="#ffffff"
+                        android:paddingTop="30dp"
+                        android:text="STATUS"
+                        android:textAlignment="center"
+                        android:textColor="#000000"
+                        android:textSize="10pt"
+                        android:textStyle="bold" />
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:layout_width="130dp"
+                        android:layout_height="70dp"
+                        android:background="#ffffff"
+                        android:paddingTop="20dp"
+                        android:text="CO :"
+                        android:textAlignment="center"
+                        android:textColor="#000000"
+                        android:textSize="10pt"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/coindex"
+                        android:layout_width="150dp"
+                        android:layout_height="70dp"
+                        android:background="#ffffff"
+                        android:paddingTop="20dp"
+                        android:text="0.12345"
+                        android:textAlignment="center"
+                        android:textColor="#877B7B"
+                        android:textSize="10pt"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/costatus"
+                        android:layout_width="130dp"
+                        android:layout_height="70dp"
+                        android:background="#ffffff"
+                        android:paddingTop="20dp"
+                        android:text="Normal"
+                        android:textAlignment="center"
+                        android:textColor="#24FF00"
+                        android:textSize="10pt"
+                        android:textStyle="bold" />
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:layout_width="130dp"
+                        android:layout_height="70dp"
+                        android:background="#ffffff"
+                        android:paddingTop="20dp"
+                        android:text="CO2 :"
+                        android:textAlignment="center"
+                        android:textColor="#000000"
+                        android:textSize="10pt"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/co2index"
+                        android:layout_width="150dp"
+                        android:layout_height="70dp"
+                        android:background="#ffffff"
+                        android:paddingTop="20dp"
+                        android:text="1.23456"
+                        android:textAlignment="center"
+                        android:textColor="#877B7B"
+                        android:textSize="10pt"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/co2status"
+                        android:layout_width="130dp"
+                        android:layout_height="match_parent"
+                        android:background="#ffffff"
+                        android:paddingTop="20dp"
+                        android:text="Normal"
+                        android:textAlignment="center"
+                        android:textColor="#24FF00"
+                        android:textSize="10pt"
+                        android:textStyle="bold" />
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:layout_width="130dp"
+                        android:layout_height="70dp"
+                        android:background="#ffffff"
+                        android:paddingTop="20dp"
+                        android:text="NH4 :"
+                        android:textAlignment="center"
+                        android:textColor="#000000"
+                        android:textSize="10pt"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/nh4index"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:background="#ffffff"
+                        android:paddingTop="20dp"
+                        android:text="3.45678"
+                        android:textAlignment="center"
+                        android:textColor="#877B7B"
+                        android:textSize="10pt"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/nh4status"
+                        android:layout_width="130dp"
+                        android:layout_height="70dp"
+                        android:background="#ffffff"
+                        android:paddingTop="20dp"
+                        android:text="Warning"
+                        android:textAlignment="center"
+                        android:textColor="#FFC700"
+                        android:textSize="10pt"
+                        android:textStyle="bold" />
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:layout_width="130dp"
+                        android:layout_height="70dp"
+                        android:background="#ffffff"
+                        android:paddingTop="20dp"
+                        android:text="Acetona :"
+                        android:textAlignment="center"
+                        android:textColor="#000000"
+                        android:textSize="10pt"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/acetonaindex"
+                        android:layout_width="150dp"
+                        android:layout_height="70dp"
+                        android:background="#ffffff"
+                        android:paddingTop="20dp"
+                        android:text="45.6789"
+                        android:textAlignment="center"
+                        android:textColor="#877B7B"
+                        android:textSize="10pt"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/acetonastatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="70dp"
+                        android:background="#ffffff"
+                        android:paddingTop="20dp"
+                        android:text="Dangerous"
+                        android:textAlignment="center"
+                        android:textColor="#FF0000"
+                        android:textSize="10pt"
+                        android:textStyle="bold" />
+                </TableRow>
+
+            </TableLayout>
+
+            <TextView
+                android:id="@+id/unsubscribe"
+                android:layout_width="200dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="100dp"
+                android:paddingTop="4dp"
+                android:elevation="3dp"
+                android:background="@drawable/buttons"
+                android:onClick="unsubscribeClick"
+                android:textAlignment="center"
+                android:text="Unsubscribe"
+                android:textColor="#ffffff"
+                android:textColorHint="#877B7B"
+                android:textSize="8pt"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/historygraph"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Historic air quality graph"
+                android:textColor="#0939B4"
+                android:textSize="8pt"
+                android:textStyle="bold"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:onClick="graph"
+                />
+
+        </LinearLayout>
+
+    </ScrollView>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
