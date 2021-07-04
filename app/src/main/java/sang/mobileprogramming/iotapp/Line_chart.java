@@ -36,75 +36,89 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Line_chart extends AppCompatActivity {
-    private String JSON_URL = "http://www.json-generator.com/api/json/get/cozBMLMTaW?indent=2";
+
     LineChart lineChart;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_line_chart);
+
         lineChart = findViewById(R.id.lineChart);
         LineDataSet lineDataSet1 = new LineDataSet(lineChartDataSet1(),"Co");
         LineDataSet lineDataSet2 = new LineDataSet(lineChartDataSet2(),"Co2");
-
+        LineDataSet lineDataSet3 = new LineDataSet(lineChartDataSet3(),"Nh4");
+        LineDataSet lineDataSet4 = new LineDataSet(lineChartDataSet4(),"Acetone");
         ArrayList<ILineDataSet> iLineDataSets = new ArrayList<>();
         iLineDataSets.add(lineDataSet1);
         iLineDataSets.add(lineDataSet2);
+        iLineDataSets.add(lineDataSet3);
+        iLineDataSets.add(lineDataSet4);
+
         LineData lineData = new LineData(iLineDataSets);
         lineChart.setData(lineData);
         lineChart.invalidate();
-
         lineChart.setNoDataText("Data not Available");
 
         lineDataSet1.setColor(Color.BLUE);
-        lineDataSet1.setCircleColor(Color.GREEN);
-        lineDataSet1.setDrawCircles(true);
-        lineDataSet1.setDrawCircleHole(true);
         lineDataSet1.setLineWidth(5);
-        lineDataSet1.setCircleRadius(10);
-        lineDataSet1.setCircleHoleRadius(10);
         lineDataSet1.setValueTextSize(10);
         lineDataSet1.setValueTextColor(Color.BLACK);
 
         lineDataSet2.setColor(Color.RED);
-        lineDataSet2.setCircleColor(Color.YELLOW);
-        lineDataSet2.setDrawCircles(true);
-        lineDataSet2.setDrawCircleHole(true);
         lineDataSet2.setLineWidth(5);
-        lineDataSet2.setCircleRadius(10);
-        lineDataSet2.setCircleHoleRadius(10);
         lineDataSet2.setValueTextSize(10);
         lineDataSet2.setValueTextColor(Color.BLACK);
+
+        lineDataSet3.setColor(Color.GREEN);
+        lineDataSet3.setLineWidth(5);
+        lineDataSet3.setValueTextSize(10);
+        lineDataSet3.setValueTextColor(Color.BLACK);
+
+        lineDataSet4.setColor(Color.YELLOW);
+        lineDataSet4.setLineWidth(5);
+        lineDataSet4.setValueTextSize(10);
+        lineDataSet4.setValueTextColor(Color.BLACK);
     }
     private ArrayList<Entry> lineChartDataSet1(){
         ArrayList<Entry> dataSet = new ArrayList<Entry>();
-
-        dataSet.add(new Entry(0,40));
-        dataSet.add(new Entry(1,10));
-        dataSet.add(new Entry(2,15));
-        dataSet.add(new Entry(3,12));
-        dataSet.add(new Entry(4,20));
-        dataSet.add(new Entry(5,50));
-        dataSet.add(new Entry(6,23));
-        dataSet.add(new Entry(7,34));
-        dataSet.add(new Entry(8,12));
+        int k = Math.min(AirQuality.cCo.size(), 8);
+        for(int i = 0; i < k; i++){
+            double d = AirQuality.cCo.get(i);
+            float f = (float) d;
+            dataSet.add(new Entry(i, f));
+        }
         return  dataSet;
-
-
     }
     private ArrayList<Entry> lineChartDataSet2(){
         ArrayList<Entry> dataSet = new ArrayList<Entry>();
-
-        dataSet.add(new Entry(0,30));
-        dataSet.add(new Entry(1,20));
-        dataSet.add(new Entry(2,25));
-        dataSet.add(new Entry(3,22));
-        dataSet.add(new Entry(4,30));
-        dataSet.add(new Entry(5,20));
-        dataSet.add(new Entry(6,33));
-        dataSet.add(new Entry(7,54));
-        dataSet.add(new Entry(8,22));
+        int k = Math.min(AirQuality.cCo2.size(), 8);
+        for(int i = 0; i < k; i++){
+            double d = AirQuality.cCo2.get(i);
+            float f = (float) d;
+            dataSet.add(new Entry(i, f));
+        }
         return  dataSet;
+    }
 
+    private ArrayList<Entry> lineChartDataSet3(){
+        ArrayList<Entry> dataSet = new ArrayList<Entry>();
+        int k = Math.min(AirQuality.cNh4.size(), 8);
+        for(int i = 0; i < k; i++){
+            double d = AirQuality.cNh4.get(i);
+            float f = (float) d;
+            dataSet.add(new Entry(i, f));
+        }
+        return  dataSet;
+    }
 
+    private ArrayList<Entry> lineChartDataSet4(){
+        ArrayList<Entry> dataSet = new ArrayList<Entry>();
+        int k = Math.min(AirQuality.cAceton.size(), 8);
+        for(int i = 0; i < k; i++){
+            double d = AirQuality.cAceton.get(i);
+            float f = (float) d;
+            dataSet.add(new Entry(i, f));
+        }
+        return  dataSet;
     }
 }

@@ -33,7 +33,7 @@ public class SubscribeMore extends AppCompatActivity implements OnMapReadyCallba
     List<LatLng> latLngList = new ArrayList<LatLng>();
 
     String place = null;
-    String[] locationList = new String[] {
+    public static String[] locationList = new String[] {
             "Bách Khoa Hà Nội",
             "Bạch Mai",
             "Minh Khai"

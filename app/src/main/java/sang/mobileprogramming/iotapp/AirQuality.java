@@ -18,6 +18,10 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+
 import org.eclipse.paho.android.service.MqttAndroidClient;
 import org.eclipse.paho.client.mqttv3.IMqttActionListener;
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
@@ -40,9 +44,19 @@ import java.util.List;
 
 public class AirQuality extends AppCompatActivity{
     static boolean sub = false;
+    String topics = null;
     double co, co2, nh4, acetona;
-    Dialog mdialog;
-    Button mbtt;
+    public static ArrayList<Double> cCo = new ArrayList<Double>();
+    public static ArrayList<Double> cCo2 = new ArrayList<Double>();
+    public static ArrayList<Double> cNh4 = new ArrayList<Double>();
+    public static ArrayList<Double> cAceton = new ArrayList<Double>();
+
+    static public String[] listTopic = new String[] {
+            "BachKhoa",
+            "BachMai",
+            "MinhKhai"
+    };
+
     static MyTask myTask = null;
     MqttAndroidClient client = null;
 
@@ -82,7 +96,7 @@ public class AirQuality extends AppCompatActivity{
     }
 
     void pub(String content){
-        String topic = "/MQ135/data";
+        String topic = "/MQ135/" + topics+ "/data";
         String payload = content;
         byte[] encodedPayload = new byte[0];
         try {
@@ -99,12 +113,11 @@ public class AirQuality extends AppCompatActivity{
             public void connectionLost(Throwable cause) {
 
             }
-
             @Override
             public void messageArrived(String topic, MqttMessage message) throws Exception {
                 String msg = new String(message.getPayload());
                 System.out.println("mqtt" + "Received message: " + msg);
-                if (!topic.equals("/MQ135/data")) {
+                if (!topic.equals("/MQ135/" + topics+ "/data")) {
                     System.out.println("mqtt" + "Message Arrived not subcribed collect topic");
                     return;
                 } else {
@@ -123,6 +136,10 @@ public class AirQuality extends AppCompatActivity{
                         System.out.println("NH4: " + nh4);
                         acetona = jobj.getDouble("Acetona");
                         System.out.println("Acetona: " + acetona);
+                        cCo.add(co);
+                        cCo2.add(co2);
+                        cNh4.add(nh4);
+                        cAceton.add((acetona));
                     } catch (JSONException e) {
                         // TODO Auto-generated catch block
                         System.out.println("mqtt" + "Collect data packet is wrong format");
@@ -151,7 +168,7 @@ public class AirQuality extends AppCompatActivity{
                 public void onSuccess(IMqttToken asyncActionToken) {
                     // We are connected
                     Log.d("mqtt", "onSuccess");
-                    String topic = "/MQ135/data";
+                    String topic = "/MQ135/" + topics+ "/data";
                     int qos = 2;
                     try {
                         IMqttToken subToken = client.subscribe(topic, qos);
@@ -191,16 +208,15 @@ public class AirQuality extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.air_quality);
-        /*mbtt = findViewById(R.id.historygraph);
-        mdialog = new Dialog(this);
-        mbtt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mdialog.setContentView(R.layout.graph);
-                mdialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                mdialog.show();
+        cCo.clear();
+        cCo2.clear();
+        cNh4.clear();
+        cAceton.clear();
+        for(int i = 0; i < SubscribeMore.locationList.length; i++){
+            if (SubscribeMore.locationList[i] == SubscribedList.subscribedItem){
+                topics = listTopic[i];
             }
-        });*/
+        }
         Log.d("ASYNCDEBUG", Long.toString(Thread.currentThread().getId()));
         connect();
         updateAirQuality();
@@ -297,12 +313,8 @@ public class AirQuality extends AppCompatActivity{
         t.show();
     }
     public void graph(View view) {
-        /*mdialog = new Dialog(this);
-        mdialog.setContentView(R.layout.graph);
-        mdialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        mdialog.show();*/
+
         Intent intent = new Intent(this, Line_chart.class);
         startActivity(intent);
     }
-
 }
